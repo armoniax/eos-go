@@ -285,8 +285,9 @@ type GetTableRowsRequest struct {
 }
 
 type GetTableRowsResp struct {
-	More bool            `json:"more"`
-	Rows json.RawMessage `json:"rows"` // defer loading, as it depends on `JSON` being true/false.
+	More    bool            `json:"more"`
+	Rows    json.RawMessage `json:"rows"` // defer loading, as it depends on `JSON` being true/false.
+	NextKey string          `json:"next_key,omitempty"`
 }
 
 func (resp *GetTableRowsResp) JSONToStructs(v interface{}) error {
